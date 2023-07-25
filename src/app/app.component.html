@@ -1,0 +1,242 @@
+<app-header></app-header>
+<app-employee-details></app-employee-details>
+<div class="container">
+  <div class="row bootstrap snippets bootdeys">
+    <div class="col-md-9 col-sm-7">
+      <h2>Members</h2>
+    </div>
+
+    <!-- <div class="col-md-3 col-sm-5"> 
+            <form method="get" role="form" class="search-form-full"> 
+                <div class="form-group"> 
+                    <input type="text" class="form-control" name="s" id="search-input" placeholder="Search..."> 
+                    <i class="entypo-search"></i> 
+                </div> 
+            </form> 
+        </div> 
+    </div> -->
+
+    <div class="container p-3">
+      <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+        <div *ngFor="let employee of employees; let i = index">
+          <!-- <div *ngIf="isOne(employee.id)"> -->
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="text-center">
+                <div class="img-hover-zoom img-hover-zoom--colorize">
+                  <img
+                    class="shadow"
+                    src="assets/img9.png"
+                    alt="Another Image zoom-on-hover effect"
+                  />
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="clearfix mb-3"></div>
+
+                <div class="my-2 text-center">
+                  <h1>{{ employee?.name }}</h1>
+                </div>
+                <div class="mb-3">
+                  <h2 class="text-uppercase text-center role">
+                    {{ employee?.role }}
+                  </h2>
+                </div>
+                <div class="mb-1">
+                  <p class="text-uppercase text-center role">
+                    {{ employee?.empl_id }} | {{ employee?.joining }} |
+                    {{ employee?.gender }}
+                  </p>
+                  <p class="text-center role">
+                    <span class="fa fa-envelope" style="color: hotpink"></span>
+                    {{ employee?.email }} |
+                    <span style="color: hotpink" class="fa fa-phone"></span>
+                    {{ employee?.phone_no }}
+                  </p>
+                </div>
+                <!---
+                  
+                  TECHSTACK
+                  
+                  
+                  
+                  -->
+
+                <!---
+                  
+                  
+                  TECJSTACK END
+                  
+                  
+                  -->
+
+                <!--TECH-->
+                <div style="margin: auto; text-align: center; padding: 3px">
+                  <div class="btn-group dropup">
+                    <button
+                      type="button"
+                      class="btn btn-danger dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Powered TechStack
+                    </button>
+
+                    <div class="dropdown-menu">
+                      <div>
+                        <div *ngFor="let emptech of emptech">
+                          <div *ngIf="isEqual(employee?.id, emptech?.emp_id)">
+                            <div *ngFor="let techstack of techstack">
+                              <div
+                                *ngIf="isEqual(emptech?.ts_id, techstack?.tech_id) ">
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >{{ techstack?.ts_name }}
+                                    <img
+                                      style="width: 25px; height: 25px"
+                                      src="https://media.tenor.com/bH5qXUAuk4kAAAAC/fire.gif"
+                                    />
+                                    <span
+                                      class="circle"
+                                      style="display: inline-block"
+                                      >{{ emptech.endorse }}</span
+                                    >
+                                  </a>
+                                </li>
+                                <!-- <p class="text-center role">
+          <span > | </span>
+        </p> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="margin: auto; text-align: center; padding: 3px">
+                  <button
+                    (click)="updateIndex(i)"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                  >
+                    <img
+                      src="assets/img11.png"
+                      style="width: 25px; height: 25px"
+                      title="muscle icons"
+                    />
+                    +1
+                  </button>
+                </div>
+
+                <div
+                  class="modal"
+                  id="exampleModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+
+
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                   
+
+
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <div class="modal-title" id="exampleModalLabel">
+                          Endorse {{ employees[index]?.name }}</div>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                       <!--logic-->
+
+                      <div class="modal-body">
+
+                        <div class="container d-flex justify-content-center align-items-center">
+
+                          <div class="dropdown">
+                            <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                              <span>Select Tech To Endorse Babyy</span>
+                              <i class="fa fa-caret-down"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <div *ngFor="let emptech of emptech">
+                                <div *ngIf="isEqual(employees[index]?.id, emptech?.emp_id)">
+                                  <div *ngFor="let techstack of techstack">
+                                    <div *ngIf="isEqual(emptech?.ts_id, techstack?.tech_id) ">
+                              <li><a class="dropdown-item" href="#">{{techstack?.ts_name}}</a></li>
+                             
+
+                    <!--logic div-->
+                  </div> </div></div></div>
+                            </ul>
+                          </div>
+                           
+            
+                         </div>
+
+
+                      </div>
+                    
+
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Save changes
+                        </button>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+                <div class="box">
+                  <div>
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <i class="fab fa-github"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="fab fa-linkedin-in"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="fab fa-instagram"></i>
+                      </li>
+                      <li class="list-inline-item">
+                        <i class="fab fa-twitter"></i>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
+<div></div>

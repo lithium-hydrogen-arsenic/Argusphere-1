@@ -1,0 +1,118 @@
+<div class="container db-social">
+    <div class="jumbotron jumbotron-fluid"></div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+  
+            <div class="col-xl-11">
+                <div *ngFor="let employee of employees">
+                    <div *ngIf="isOne(employee.id)">
+                <div class="widget head-profile has-shadow">
+                    <div class="widget-body pb-0">
+                        
+                        <div class="row d-flex align-items-center">
+                            
+                            <div class="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center">
+                                <ul style="text-align: center;">
+                                    <li>
+                                        <div class="counter">{{employee.empl_id}}</div>
+                                        <div class="heading">ID No.</div>
+                                    </li>
+                                    <li style="padding-right: 1rem; padding-left: 0;">
+                                        <div class="counter">{{employee.seating}}</div>
+                                        <div class="heading">Seating</div>
+                                    </li>
+                                    <li style="padding-right: 0; padding-left: 0;">
+                                        <div class="counter">{{employee.joining}}</div>
+                                        <div class="heading">Joining</div>
+                                    </li>
+                                
+                                </ul>
+                            </div>
+                            <div class="col-xl-4 col-md-4 d-flex justify-content-center">
+                                <div class="image-default">
+                                    <img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="...">
+                                </div>
+                                <div style="margin-top: 2rem;"  class="infos">
+                                    <h2>{{employee.name}}</h2>
+                                    <div class="location">{{employee.role}} | {{employee.gender}}</div>
+                                    <div class="location">{{employee.email}}</div>
+                                    <div class="location">{{employee.phone_no}}</div>
+                                    <div class=" justify-content-center">
+                                        <div class="follow">
+                                            <a class="btn btn-shadow" href="#">
+                                                <i class="la la-user-plus"></i>Edit Profile</a>
+                                        </div>
+                                        </div>
+                                </div>
+                                
+                            </div>
+                           <div style="margin-top: 0px;" class="col-xl-4 col-md-4 d-flex justify-content-center justify-content-lg-end justify-content-md-end">
+                            <div class="infos">
+                            <h2> <img style="width: 40px; height: 40px; margin-bottom: 2px; " src="assets/img12.png" /> Powered Tech  </h2>
+                            <div *ngFor="let emptech of emptech">
+                                <div *ngIf="isOne(emptech.emp_id)">
+                              <div *ngFor="let techstack of techstack">
+                                <div *ngIf="isEqual(emptech.ts_id, techstack.tech_id)">
+                                 
+                                        
+                                 <div class="" style="text-decoration-color: blueviolet; margin-bottom: 1px; margin-left: -4px;"> {{techstack.ts_name}}  
+                                   
+                                    <img style="width: 15px; height: 15px; " src="https://media.tenor.com/bH5qXUAuk4kAAAAC/fire.gif" />  
+                                    <!-- <span class="circle" style="display: inline-block;"> -->
+                                      <span style="margin-left: 0px; font-size:medium; margin-bottom: 2px;"> {{emptech.endorse}}</span>
+                                    <!-- </span>   -->
+                                </div>
+                                    
+                                    <!-- <p class="text-center role">
+                                <span > | </span>
+                              </p> -->
+                            </div>
+                            </div></div>
+                          </div>
+                         
+                        </div>
+                         
+                        </div>
+
+                          
+                                   
+                                   
+                                   <!-- TECH STACKK -->
+                                    <!-- <div style="margin:auto; text-align: center; padding: 3px;" >     
+                                        
+                                        <div class="btn-group dropup"  >
+                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Powered TechStack
+                                        </button>
+                                      
+                                        <div class="dropdown-menu">
+                                          <div>
+                                            <div *ngFor="let emptech of emptech">
+                                                <div *ngIf="isEqual(employee.id,emptech.emp_id)">
+                                              <div *ngFor="let techstack of techstack">
+                                                <div *ngIf="isEqual(emptech.ts_id, techstack.tech_id)">
+                                                  <li><a class="dropdown-item" href="#">{{techstack.ts_name}}  
+                                                    <img style="width: 25px; height: 25px; " src="https://media.tenor.com/bH5qXUAuk4kAAAAC/fire.gif" />  <span class="circle" style="display: inline-block;">{{emptech.endorse}}</span> </a>
+                                                   </li> 
+                                                    <p class="text-center role">
+                                                <span > | </span>
+                                              </p>
+                                            </div>
+                                            </div></div>
+                                          </div>
+                                          </div> 
+                                          </div>
+                                       </div>
+                                          </div> -->
+                                        
+                                <!-- </div>
+                            </div> -->
+
+                        
+                    </div>
+                </div>
+            </div>
+            </div></div>
+        </div>
+    </div>
+</div>
