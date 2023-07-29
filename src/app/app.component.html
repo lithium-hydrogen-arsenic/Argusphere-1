@@ -90,7 +90,10 @@
                           <div *ngIf="isEqual(employee?.id, emptech?.emp_id)">
                             <div *ngFor="let techstack of techstack">
                               <div
-                                *ngIf="isEqual(emptech?.ts_id, techstack?.tech_id) ">
+                                *ngIf="
+                                  isEqual(emptech?.ts_id, techstack?.tech_id)
+                                "
+                              >
                                 <li>
                                   <a class="dropdown-item" href="#"
                                     >{{ techstack?.ts_name }}
@@ -142,16 +145,15 @@
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
-
-
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                   
-
-
+                  <div
+                    class="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
                     <div class="modal-content">
                       <div class="modal-header">
                         <div class="modal-title" id="exampleModalLabel">
-                          Endorse {{ employees[index]?.name }}</div>
+                          Endorse {{ employees[index]?.name }}
+                        </div>
                         <button
                           type="button"
                           class="close"
@@ -161,14 +163,15 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                       <!--logic-->
+                      <!--logic-->
 
                       <div class="modal-body">
-
-                        <div class="container d-flex justify-content-center align-items-center">
-
+                        <div
+                          class="container d-flex justify-content-center align-items-center"
+                        >
                           <div class="dropdown">
-                            <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                            <!--BUTTON SELECT TECH-->
+                            <!-- <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                               <span>Select Tech To Endorse Babyy</span>
                               <i class="fa fa-caret-down"></i>
                             </button>
@@ -177,20 +180,53 @@
                                 <div *ngIf="isEqual(employees[index]?.id, emptech?.emp_id)">
                                   <div *ngFor="let techstack of techstack">
                                     <div *ngIf="isEqual(emptech?.ts_id, techstack?.tech_id) ">
-                              <li><a class="dropdown-item" href="#">{{techstack?.ts_name}}</a></li>
+                              <li><a class="dropdown-item" >{{techstack?.ts_name}}</a></li>
                              
 
-                    <!--logic div-->
+                    logic div
                   </div> </div></div></div>
-                            </ul>
+                            </ul> -->
+
+                            <select
+                              (change)="onSelectChange($event)"
+                              name="form_select"
+                              class="form-select"
+                              aria-label="Default select example"
+                            >
+                              <option value="" selected>
+                                Select Tech To Endorse Babyy
+                              </option>
+                              <ng-container *ngFor="let emptech of emptech">
+                                <ng-container
+                                  *ngIf="
+                                    isEqual(
+                                      employees[index]?.id,
+                                      emptech?.emp_id
+                                    )
+                                  "
+                                >
+                                  <ng-container
+                                    *ngFor="let techstack of techstack"
+                                  >
+                                    <ng-container
+                                      *ngIf="
+                                        isEqual(
+                                          emptech?.ts_id,
+                                          techstack?.tech_id
+                                        )
+                                      "
+                                    >
+                                      <option [value]="techstack?.tech_id">
+                                        {{ techstack?.ts_name }}
+                                      </option>
+                                    </ng-container></ng-container
+                                  ></ng-container
+                                ></ng-container
+                              >
+                            </select>
                           </div>
-                           
-            
-                         </div>
-
-
+                        </div>
                       </div>
-                    
 
                       <div class="modal-footer">
                         <button
@@ -200,13 +236,23 @@
                         >
                           Close
                         </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
+                        <button
+                          data-dismiss="modal"
+                          (click)="
+                            addEndorse(2, employees[index]?.id, SelectedTech);
+                            addEmptechEndorse(
+                              employees[index]?.id,
+                              SelectedTech,
+                              findEndorse(employees[index]?.id, SelectedTech)
+                            )
+                          "
+                          type="button"
+                          class="btn btn-primary"
+                        >
+                          Endorse
                         </button>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
 

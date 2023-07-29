@@ -4,7 +4,7 @@ body{
 }
 .db-social .jumbotron {
     margin: 0;
-    background: url(https://bootdey.com/img/Content/flores-amarillas-wallpaper.jpeg);
+    background: url(https://img.freepik.com/free-vector/office-workers-workplace-night-time-business-people-rear-view-sitting-desks-work-computers_107791-5708.jpg?w=1060&t=st=1690605628~exp=1690606228~hmac=cacd245582de6fcea0c33bf0be239ee8849ad1b2e0aa2dbd8be5071b425a99fc);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -168,3 +168,8 @@ ol, ul {
     color: #aea9c3;
     font-size: 1rem;
 }
+
+  .modal {
+    backdrop-filter: blur(5px); 
+    -webkit-backdrop-filter: blur(10px); 
+  }

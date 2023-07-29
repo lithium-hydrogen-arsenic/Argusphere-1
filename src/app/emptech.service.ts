@@ -4,18 +4,37 @@ import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmptechService {
-private apiServerUrl='http://localhost:8080';
+  private apiServerUrl = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getEmptech(): Observable<any>{
-      return this.http.get<any>(`${this.apiServerUrl}/emptech/alltech`);
+  public getEmptech(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/emptech/alltech`);
   }
 
-  public updateEmployees(): Observable<any>{
-    return this.http.get<any>(`${this.apiServerUrl}/employee/all`);
-}
+
+  public addEndorse(
+    empId: number,
+    tsId: number,
+    endorse: number
+  ): Observable<any> {
+    return this.http.put<any>(
+      `${this.apiServerUrl}/emptech/addEndorse/${empId}/${tsId}/${endorse}`,
+      {}
+    );
+  }
+
+  public subEndorse(
+    empId: number,
+    tsId: number,
+    endorse: number
+  ): Observable<any> {
+    return this.http.put<any>(
+      `${this.apiServerUrl}/emptech/subEndorse/${empId}/${tsId}/${endorse}`,
+      {}
+    );
+  }
 }

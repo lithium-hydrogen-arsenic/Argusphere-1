@@ -6,6 +6,7 @@ import { EmployeeService } from '../employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { EmptechService } from '../emptech.service';
 import { TechstackService } from '../techstack.service';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-employee-details',
@@ -13,7 +14,18 @@ import { TechstackService } from '../techstack.service';
   styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeDetailsComponent implements OnInit {
+  index: number;
+  updateIndex(id: number) {
+    this.index = id;
+  }
+  employee: Employee[]=[];
+
+  onSubmit(): void {
+   
+    console.log('Form submitted! Employee details:', this.employee);
   
+  }
+
   isOne(emp_id: any) {
     if (emp_id == 1) {
       return true;
@@ -28,7 +40,10 @@ export class EmployeeDetailsComponent implements OnInit {
       return false;
     }
   }
-
+employee2:Employee;
+public male="Male";
+public female="Female";
+public na="N/A";
   public emptech: Emptech[]=[];
   public employees: Employee[] = [];
 public techstack: Techstack[]=[];
@@ -38,7 +53,24 @@ constructor(private employeeService: EmployeeService, private emptechService: Em
   ngOnInit(): void {
     this.getEmployees();
     this.getEmptech();
-    this.getTechstack();
+    this.getTechstack(); 
+  }
+
+  updateEmployee(id: number, empl_id: string, joining: number, seating: string, gender: string, role: string, phone_no: string) {
+    this.employeeService.updateEmployee(id,empl_id, joining, seating, gender, role, phone_no).subscribe(
+      (response) => {
+        console.log('Employee entry added successfully:', response);
+   
+        // Perform any other actions after successful addition
+      },
+      (error) => {
+        console.error('Error adding endorse entry:', error);
+        console.log(error);
+        // Handle error if necessary console.log(newEndorse);
+      }
+    );
+    var button = document.getElementById('close-button');
+    button.click();
   }
 
   public getEmployees(): void {
@@ -80,3 +112,6 @@ constructor(private employeeService: EmployeeService, private emptechService: Em
     });
   }
 }
+
+
+

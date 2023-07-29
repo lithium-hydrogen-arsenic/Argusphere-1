@@ -124,3 +124,8 @@ h1 {
     padding: 12px;
 
     }
+    .modal {
+        /* Other modal styles... */
+        backdrop-filter: blur(5px); /* Adjust the blur amount as needed */
+        -webkit-backdrop-filter: blur(5px); /* For compatibility with Safari */
+      }
