@@ -1,4 +1,6 @@
+
 <app-header></app-header>
+
 <app-employee-details></app-employee-details>
 <div class="container">
   <div class="row bootstrap snippets bootdeys">
@@ -18,7 +20,7 @@
 
     <div class="container p-3">
       <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
-        <div *ngFor="let employee of employees; let i = index">
+        <div *ngFor="let employee of employees | search:searchText; let i = index ">
           <!-- <div *ngIf="isOne(employee.id)"> -->
           <div class="col">
             <div class="card h-100 shadow-sm">
@@ -286,3 +288,4 @@
   <router-outlet></router-outlet>
 </div>
 <div></div>
+

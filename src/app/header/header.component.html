@@ -1,4 +1,8 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+<nav class="navbar navbar-expand-lg bg-body-tertiary"  style="    position: fixed;
+width: 100vw;
+z-index: 10;
+margin-top: -150px;
+">
     <div class="container-fluid" style="background-color: #000000;">
       <a class="" script=";" href="#">
         <img class="w-50 mr-0 p-3 h-10" src="/assets/img2.png" alt="Bootstrap" >
@@ -28,9 +32,9 @@
             <img class="mr-5" style="height: 40px; width:40px;" src="/assets/img4.png" alt="Bootstrap" >
             <!-- <a class="navbar-brand ml-2" href="#">Argusphere</a> -->
       
-          <input class="form-control me-2 mr-10"  type="search" placeholder="Search employee or technology" aria-label="Search">
+          <input class="form-control me-2 mr-10" name="search"  type="search" placeholder="Search employee or technology" [(ngModel)]="searchText" (input)="updateSearchQuery()" aria-label="Search">
           <button class="btn btn-outline-light" style="color:palevioletred; border: 2px solid rgb(214, 92, 133);" type="submit">Search</button>
-          <router-outlet></router-outlet></form>
+          </form>
       </div>
     </div>
   </nav>

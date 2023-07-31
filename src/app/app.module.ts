@@ -11,6 +11,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -19,18 +20,21 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     EmployeeDetailsComponent,
     TechSkillComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SearchPipe
   
      
     
      
     
   ],
-  imports: [FormsModule,
+  imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    
+    // Ng2SearchPipeModule,
+    // NgModule
   ],
   providers: [],
   bootstrap: [AppComponent]

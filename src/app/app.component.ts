@@ -9,6 +9,8 @@ import { EmptechService } from './emptech.service';
 import { TechstackService } from './techstack.service';
 import { Endorse } from './endorse';
 import { EndorseService } from './endorse.service';
+import { HeaderComponent } from './header/header.component';
+import { SharedDataService } from './shared-data.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
   index: number;
   selectedIDno: number;
   SelectedTech: number;
+  allEmployees: Employee[];
 
   updateIndex(id: number) {
     this.index = id;
@@ -71,20 +74,48 @@ export class AppComponent implements OnInit {
   public endorseSelected: number;
 
   constructor(
+
     private employeeService: EmployeeService,
     private emptechService: EmptechService,
     private techstackService: TechstackService,
-    private endorseService: EndorseService
+    private endorseService: EndorseService,
+    private sharedDataService: SharedDataService
+    
   ) {}
 
+
+  searchText:String;
   ngOnInit(): void {
     this.getEmployees();
     this.getEmptech();
     this.getTechstack();
     this.initCarousel();
     this.getEndorse();
+    this.sharedDataService.searchQueryObservable.subscribe(
+      (res) => {
+        console.log(res);
+        this.searchText=res;
+        if(this.searchText.trim() === ''){
+          this.employees = this.allEmployees;
+        }
+        else{
+          this.employees = this.employees.filter((employee) => {
+            return employee.name.toLowerCase().includes(this.searchText.toLowerCase())
+            || employee.email.toLowerCase().includes(this.searchText.toLowerCase())
+            || employee.empl_id.toString().toLowerCase().includes(this.searchText.toLowerCase())
+            || employee.role.toLowerCase().includes(this.searchText.toLowerCase())
+            ;
+          });
+        }
+      }
+    )
+    
   }
 
+  // private headerComponent:HeaderComponent
+  // seachText:String=this.headerComponent.searchText
+  // searchEmp = new HeaderComponent;
+  
   addEndorse(
     given_endorse_id: number,
     employee_id: number,
@@ -194,6 +225,7 @@ export class AppComponent implements OnInit {
     this.employeeService.getEmployees().subscribe({
       next: (reponse: Employee[]) => {
         this.employees = reponse;
+        this.allEmployees = this.employees;
         console.log(this.employees);
       },
       error: (error: HttpErrorResponse) => {
